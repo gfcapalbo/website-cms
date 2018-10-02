@@ -25,7 +25,6 @@ class EventListing(http.Controller, SearchFormControllerMixin):
 
     @http.route([
         '/event/event_list',
-        '/event/event_list/page/<int:page>',
     ], type='http', auth="public", website=True)
     def market(self, **kw):
         model = 'event.event'

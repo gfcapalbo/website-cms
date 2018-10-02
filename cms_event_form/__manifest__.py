@@ -15,5 +15,6 @@
     ],
     'data': [
         'templates/widgets.xml',
+        'templates/assets.xml',
     ]
 }

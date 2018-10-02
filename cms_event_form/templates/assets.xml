@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template 
+        id="assets_frontend" 
+        name="ppz_website_event_assets" 
+        inherit_id="website.assets_frontend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/less"
+                href="/cms_event_form/static/src/less/cms_event_form.less"/>
+        </xpath>
+    </template>
+</odoo>
