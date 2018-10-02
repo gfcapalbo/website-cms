@@ -321,8 +321,6 @@ class CMSFormMixin(models.AbstractModel):
     def form_get_widget_model(self, fname, field):
         """Retrieve widget model name."""
         widget_model = 'cms.form.widget.char'
-        import pudb
-        pudb.set_trace()
         for key in (field['type'], fname):
             model_key = 'cms.form.widget.' + key
             if model_key in self.env:
