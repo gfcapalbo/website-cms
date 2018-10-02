@@ -19,9 +19,9 @@ if not testing:
         _inherit = 'cms.form'
         _form_model = 'event.event'
         _form_model_fields = ('name',)
-        _form_required_fields =  ('name',)
+        _form_required_fields = ('name',)
         _form_fields_order = ('name',)
-        _form_display_mode = 'vertical'
+        _form_display_mode = 'horizontal'
 
         custom = fields.Char()
 
@@ -38,4 +38,10 @@ if not testing:
         _form_model = 'event.event'
         _form_model_fields = ('name', 'talent_area_id', 'school_ids',
                               'school_year', )
-        _form_display_mode = 'vertical'
+        _form_display_mode = 'horizontal'
+
+    def form_widgets(self):
+        "associate talent area field to talent area widget"
+        res = super(PartnerSearchForm, self).form_widgets()
+        res.update({'talent_area_id': 'cms.form.widget.talent.area'})
+        return res

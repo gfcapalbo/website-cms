@@ -10,6 +10,10 @@
     'depends': [
         'website_event',
         'ppz_event',
+        'ppz_partner',
         'cms_form',
     ],
+    'data': [
+        'templates/widgets.xml',
+    ]
 }
