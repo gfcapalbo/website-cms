@@ -40,8 +40,14 @@ if not testing:
                               'school_year', )
         _form_display_mode = 'horizontal'
 
+    @property
     def form_widgets(self):
         "associate talent area field to talent area widget"
-        res = super(PartnerSearchForm, self).form_widgets()
-        res.update({'talent_area_id': 'cms.form.widget.talent.area'})
+        import pudb
+        pudb.set_trace()
+        res = super(ExampleEventForm, self).form_widgets
+        res.update({
+            'talent_area_id': 'cms_event_form.field_widget_talent_area_id'})
         return res
+
+

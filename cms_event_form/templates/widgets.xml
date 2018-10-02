@@ -1,27 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<template id="widget_talent_area" name="loads a M2M with an image as a set of images">
-  <div class="image-widget-wrapper">
-    <input
-        type="file" capture="camera" accept="image/*"
-        t-att-id="widget.w_fname"
-        t-att-name="widget.w_fname"
-        class="form-control"
-        />
-    <t t-if="widget.w_field_value">
-      <t t-set="prefix" t-value="fname"/>
-      <img class="img img-responsive" t-att-src="widget.w_field_value.get('value')" />
-      <div t-attf-id="#{prefix}_keepbox" class="keepbox text-center">
-        <div class="form-group">
-          <label class="checkbox inline" t-attf-for="#{prefix}_keepcheck_yes">
-            <input type="radio" t-attf-id="#{prefix}_keepcheck_yes" t-attf-name="#{prefix}_keepcheck" checked="1" value="yes"/>
-            Keep current image
-          </label>
-          <label class="checkbox inline" t-attf-for="#{prefix}_keepcheck_no">
-            <input type="radio" t-attf-id="#{prefix}_keepcheck_no" t-attf-name="#{prefix}_keepcheck" value="no"/>
-            Replace current image
-          </label>
+<odoo>
+    <template id="field_widget_talent_area_id" name="CMS form for talent area">
+        <div t-attf-class="form-control #{widget.w_css_klass}">
+            <div t-foreach="widget.w_option_items"  t-as="opt_item" 
+                class="divTableCell noborder">
+                    <a itemprop="url" 
+                        t-att-href="keep('/event/event_list/')">
+                        <span 
+                            itemprop="image" 
+                            t-attf-content="{{request.httprequest.url_root}}web/image/event.talent.area/{{opt_item.id}}/logo" 
+                            t-field="talent.logo" 
+                            t-options="{'widget': 'image', 'resize': '300x300'}" 
+                            t-att-alt="opt_item.name" />
+                    </a>
+            </div>
         </div>
-      </div>
-    </t>
-  </div>
-</template>
+    </template>
+</odoo>

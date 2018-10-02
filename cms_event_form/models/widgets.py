@@ -6,7 +6,7 @@ from odoo import models
 
 class TalentAreaWidget(models.AbstractModel):
 
-    _name = 'cms_event_form.widget.talent.area'
+    _name = 'widget_talent_area'
     _inherit = 'cms.form.widget.image'
-    _w_template = 'cms_event_form.widget.talent.area'
+    _w_template = 'cms_event_form.widget_talent_area'
     _w_css_class = 'talent-area'
