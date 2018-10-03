@@ -16,5 +16,6 @@
     'data': [
         'templates/widgets.xml',
         'templates/assets.xml',
+        'data/website_menu.xml'
     ]
 }

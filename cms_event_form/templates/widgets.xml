@@ -2,21 +2,21 @@
 <odoo>
     <template id="field_widget_talent_area_id" 
         name="CMS form for talent area">
-        <div t-attf-class="form-control #{widget.w_css_klass}">
-        <div t-attf-class="#{widget.w_css_row_klass}">
-            <div t-foreach="widget.w_option_items"  t-as="opt_item" 
-                t-attf-class="#{widget.w_css_option_klass}">
-                    <a itemprop="url" 
-                        href='/event/event_list/' >
-                        <span 
-                            itemprop="image" 
-                            t-attf-content="{{request.httprequest.url_root}}web/image/event.talent.area/{{opt_item.id}}/logo" 
-                            t-field="opt_item.logo" 
-                            t-options="{'widget': 'image', 'resize': '300x300'}" 
-                            t-att-alt="opt_item.name" />
-                    </a>
-                </div>
-            </div>
-        </div>
+        <div t-attf-class="radio-select #{widget.w_css_klass}">
+                <label t-foreach="widget.w_option_items"  t-as="opt_item" > 
+                    <input type="radio" 
+                        t-attf-id="{{opt_item.id}}"
+                        t-attf-value="{{opt_item.id}}"
+                        t-attf-name="talent_area_id" 
+                        t-attf-class="form-control"></input>
+                        <img
+                                t-attf-src="{{request.httprequest.url_root}}web/image/event.talent.area/{{opt_item.id}}/logo" 
+                                t-options="{'widget': 'image', 'resize': '300x300'}" 
+                                t-att-alt="opt_item.name" />
+                        
+                            <!--TODO GET t-attf-name from widget
+                                 -->
+                </label>
+    </div>
     </template>
 </odoo>

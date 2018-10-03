@@ -3,22 +3,6 @@
 
 from odoo import http
 from odoo.addons.cms_form.controllers.main import SearchFormControllerMixin
-from odoo.addons.cms_form.controllers.main import FormControllerMixin
-
-
-class EventFormController(http.Controller, FormControllerMixin):
-    """Event form controller."""
-
-    @http.route([
-        '/event/add',
-        '/event/<model("event.event"):main_object>/edit',
-    ], type='http', auth='user', website=True)
-    def cms_form(self, main_object=None, **kw):
-        """Handle a `form` route.
-        """
-        model = 'event.event'
-        return self.make_response(
-            model, model_id=main_object and main_object.id, **kw)
 
 
 class EventListing(http.Controller, SearchFormControllerMixin):
