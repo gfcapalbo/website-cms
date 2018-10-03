@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2017 Simone Orsi
+License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
+-->
+<odoo>
+
+    <template id="form_search_results" name="CMS form event search results">
+        <div class="divTable">
+            <div class="divTableHeading">
+                <div class="divTableHead">
+                    Name            
+                </div>
+                <div class="divTableHead">
+                    Talent Area 
+                </div>
+                <div class="divTableHead">
+                    Places Available
+                </div>
+                <div class="divTableHead">
+                    Start Date
+                </div>
+                <div class="divTableHead">
+                    End Date
+                </div>
+                <div class="divTableHead">
+                    School Year
+                </div>
+                <div class="divTableHead">
+                    Weekday
+                </div>
+                <div class="divTableHead">
+                    From
+                </div>
+                <div class="divTableHead">
+                    To
+                </div>
+            </div>
+
+            <t t-foreach="form.form_search_results['results']" t-as="item">
+                <div t-attf-id="list_item_#{item.id}" t-attf-data-item='{"id": #{item.id}}'
+                        t-if="item.website_published" class="list_item oe_website_overflow_ellipsis mb8 divTableRow">
+                        <div class="divTableCell">
+                            <a t-att-href="item.website_url">
+                                <span t-esc="item.name"/>
+                            </a>
+                        </div>
+                        <div class="divTableCell">
+                            <span t-esc="item.talent_area_id.name"/> 
+                        </div>
+                        <div class="divTableCell">
+                            <span t-esc="item.seats_available"/> 
+                        </div>
+                        <div class="divTableCell">
+                            <span t-esc="item.date_begin" widget="date"/> 
+                        </div>
+                        <div class="divTableCell"> 
+                            <span t-esc="item.date_end" widget="date"/> 
+                        </div>
+                        <div class="divTableCell"> 
+                            <t t-foreach="item.school_year_ids" 
+                                t-as="school_year">
+                                <span t-esc="school_year.name"/>
+                                <span t-if="not school_year_last"> - </span>
+                            </t>
+                            <div t-if=" not item.school_year_ids">
+                                <span>No year specified</span>
+                            </div>
+
+                        </div>
+                        <!-- TODO we fetch the info on the first available session for now.
+                          how to display the other possible sessions TBD -->
+                        <t t-if="item.session_ids">
+                           <t t-set="date" 
+                               t-value="datetime.strptime(item.session_ids[0].date_begin, form.DSDF)"/>
+                           <div class="divTableCell">
+                               <span t-esc="_(form.weekdays[date.weekday()])"/> 
+                           </div>
+                           <div 
+                               class="divTableCell" 
+                               t-if="item.session_ids">
+                               <span  t-esc="date.time()" widget="float_time"/>
+                           </div>
+                           <div 
+                               class="divTableCell" 
+                               t-if="item.session_ids">
+                               <span  t-esc="date.time()" widget="float_time"/>
+                           </div>
+                        </t>
+                        <t t-if="not item.session_ids">
+                           <div class="divTableCell">
+                               <span>Day TBD </span>
+                           </div>
+                           <div class="divTableCell">
+                               <span>Start Hour TBD</span>
+                           </div>
+                           <div class="divTableCell">
+                               <span>End Hour TBD</span>
+                            </div>
+                        </t>
+                </div>
+            </t>
+      </div>
+
+    <div class="text-center mb32">
+        <t t-call="website.pager">
+            <t t-set="pager" t-value="form.form_search_results['pager']" />
+        </t>
+    </div>
+</template>
+
+
+
+</odoo>
