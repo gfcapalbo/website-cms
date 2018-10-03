@@ -15,12 +15,6 @@ License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
                     Talent Area 
                 </div>
                 <div class="divTableHead">
-                    Start Date
-                </div>
-                <div class="divTableHead">
-                    End Date
-                </div>
-                <div class="divTableHead">
                     School Year
                 </div>
                 <div class="divTableHead">
@@ -44,12 +38,6 @@ License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
                         </div>
                         <div class="divTableCell">
                             <span t-esc="item.talent_area_id.name"/> 
-                        </div>
-                        <div class="divTableCell">
-                            <span t-esc="item.date_begin" widget="date"/> 
-                        </div>
-                        <div class="divTableCell"> 
-                            <span t-esc="item.date_end" widget="date"/> 
                         </div>
                         <div class="divTableCell"> 
                             <t t-foreach="item.school_year_ids" 
