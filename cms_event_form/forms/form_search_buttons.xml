@@ -5,20 +5,54 @@ License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 -->
 <odoo>
 
+    <!-- TODO had small xpath problems, doing a full overwrite of base.form
+         -->
+<template id="cms_form.base_form" name="CMS form template">
 
-    <template id="ppz_form_buttons" name="CMS event form buttons" 
-        inherit_id="cms_form.base_form">
-        <xpath expr="//div[contains(@class, 'above-controls')]"
-            position="before">
-            <div id="controls_new_position">
+  <form t-att-action="form.form_action" t-att-method="form.form_method"
+        t-att-data-form="form.form_json_info()"
+        t-att-class="form.form_css_klass"
+        enctype="multipart/form-data">
+
+    <t t-if="form.form_method == 'POST'">
+        <input type="hidden" name="csrf_token" t-att-value="form.o_request.csrf_token()"/>
+    </t>
+
+    <t t-set="form_fields" t-value="form.form_fields()" />
+    <t t-set="form_fieldsets" t-value="form.form_fieldsets()" />
+    <t t-call="#{ form.form_fields_template }" />
+    <t t-call="#{ form.form_buttons_template }" />
+    <div class="col-sm-9 col-sm-offset-3 above-controls">
+        <!-- you can style required fields like this:
+            `form .form-group.field-required label.control-label::after{ content: '*'}`
+            You'll get the symbol here, with proper legend
+        -->
+        <t t-if="form.form_mode != 'search'">
+            <div class="form-group field-required">
+                <p class="field-required-legend"><label class="control-label"></label> Required fields</p>
             </div>
-        </xpath>
-        <xpath expr="//div[@class='form-group form-controls']"
-            position="move" 
-            target="//div[@id='controls_new_position']">
-        </xpath>
-    </template>
+        </t>
+    </div>
+
+  </form>
+</template>
 
 
-<!-- move the above-controls -->
+<!-- our personal button template, specified in the class -->
+
+
+<template id="ppz_search_form_buttons" name="buttons for ppz search form">
+  <div class="form-group form-controls">
+      <div class="buttonlist">
+        <button type="submit" class="btn">Submit</button>
+        <span>  </span>
+      <a class="btn" t-att-href="form.form_cancel_url()">Reset</a>
+    </div>
+  </div>
+</template>
+
+
+<!-- personal fields template -->
+
+
 </odoo>

@@ -20,26 +20,26 @@ if not testing:
         _inherit = 'cms.form.search'
         _form_model = 'event.event'
         _form_model_fields = ('name', 'talent_area_id', 'school_ids',
-                              'school_year_ids', 'session_ids' )
-        _form_fieldsets =[
-        {
-            'id': 'talent_area',
-            'title': '',
-            'fields': ['talent_area_id'],
-            'css_extra_klass': 'talent_area',
-        },
-        {
-            'id': 'others',
-            'title': '',
-            'fields': ['name', 'school_ids', 'school_year_ids', 'session_ids'],
-            'css_extra_klass': 'others_area'
-        },]
+                              'school_year_ids', 'session_ids')
+        _form_fieldsets = [
+            {
+             'id': 'talent_area',
+             'title': '',
+             'fields': ['talent_area_id'],
+             'css_extra_klass': 'talent_area',
+            },
+            {
+             'id': 'others',
+             'title': '',
+             'fields': [
+                 'name', 'school_ids', 'school_year_ids', 'session_ids'],
+             'css_extra_klass': 'others_area',
+            }, ]
 
         form_display_mode = 'vertical'
         form_title = ''
         form_results_per_page = 30
-        # form_buttons_template = 'cms_event_form.form_buttons'
-        #form_fields_template = 'cms_event_form.form_fields'
+        form_buttons_template = 'cms_event_form.ppz_search_form_buttons'
         form_search_results_template = 'cms_event_form.form_search_results'
 
         _form_extra_css_klass = 'ppozo_layout'
@@ -72,7 +72,10 @@ if not testing:
         _ = _
 
         def form_search_domain(self, search_values):
-            chosen_weekday = int(search_values.get('session_ids', False))
+            try:
+                chosen_weekday = int(search_values.get('session_ids', False))
+            except:
+                chosen_weekday = False
             env = self.env
             leaf = None
             if chosen_weekday:

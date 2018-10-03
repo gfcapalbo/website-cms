@@ -18,7 +18,6 @@
         'templates/widgets.xml',
         'templates/assets.xml',
         'data/website_menu.xml',
-        # 'forms/form_search_fields.xml',
         'forms/form_search_buttons.xml',
         'forms/form_search_results.xml',
     ]

@@ -156,6 +156,7 @@ License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
     <t t-call="#{ form.form_fields_template }" />
 
+    <t t-call="#{ form.form_buttons_template }" />
     <div class="col-sm-9 col-sm-offset-3 above-controls">
         <!-- you can style required fields like this:
             `form .form-group.field-required label.control-label::after{ content: '*'}`
@@ -167,7 +168,6 @@ License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
             </div>
         </t>
     </div>
-    <t t-call="#{ form.form_buttons_template }" />
 
   </form>
 
