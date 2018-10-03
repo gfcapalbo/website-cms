@@ -6,14 +6,19 @@ License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 <odoo>
 
 
-<template id="form_buttons" name="CMS event form buttons">
+    <template id="ppz_form_buttons" name="CMS event form buttons" 
+        inherit_id="cms_form.base_form">
+        <xpath expr="//div[contains(@class, 'above-controls')]"
+            position="before">
+            <div id="controls_new_position">
+            </div>
+        </xpath>
+        <xpath expr="//div[@class='form-group form-controls']"
+            position="move" 
+            target="//div[@id='controls_new_position']">
+        </xpath>
+    </template>
 
-  <div class="form-group form-controls">
-    <div class="col-sm-9 col-sm-offset-3">
-      <a class="btn btn-default" t-att-href="form.form_cancel_url()">Reset</a>
-      <button type="submit" class="btn">Search</button>
-    </div>
-  </div>
 
-</template>
+<!-- move the above-controls -->
 </odoo>

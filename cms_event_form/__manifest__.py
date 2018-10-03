@@ -12,6 +12,7 @@
         'ppz_event',
         'ppz_partner',
         'cms_form',
+        'base_view_inheritance_extension',
     ],
     'data': [
         'templates/widgets.xml',

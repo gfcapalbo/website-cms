@@ -18,5 +18,25 @@
                                  -->
                 </label>
     </div>
-    </template>
+</template>
+
+
+<template id="field_widget_session_ids" name="CMS form m2o field widget">
+
+  <select t-attf-class="form-control #{widget.w_css_klass}"
+          t-att-name="widget.w_fname"
+          t-att-required="widget.w_field['required'] and '1' or None"
+          t-att-data-params='widget.w_data_json()'>
+    <option class="empty_item" value=""><t t-esc="widget.w_field['string'] + '...'" /></option>
+    <t t-foreach="widget.w_option_items" t-as="opt_item">
+      <option class="value_item"
+              t-att-value="opt_item_index"
+              t-att-selected="opt_item == widget.w_field_value">
+        <t t-esc="opt_item"/>
+      </option>
+    </t>
+  </select>
+
+</template>
+
 </odoo>

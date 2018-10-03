@@ -28,6 +28,10 @@
 	display: table-row-group;
 }
 
+.ppozo_layout {
+  display: inline-block;
+}
+
 /* make radiobutton look like a label */
 label > input{ /* HIDE RADIO */
   visibility: hidden; /* Makes input not-clickable */
@@ -38,8 +42,41 @@ label > input + img{ /* IMAGE STYLES */
   border:2px solid transparent;
 }
 label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
-  border:2px solid #f00;
+  border:2px solid;
+  background-color: #11113F;
 }
+
+.talent_area{
+  padding: 3px;
+  margin-left:auto;
+  margin-right:auto;
+  width:80%;
+  float:center;
+  display: inline-block;
+}
+
+.field_talent{
+  width:80%;
+
+}
+.others_area{
+  padding: 3px;
+  width: 70%;
+  float: left;
+  display: inline-block;
+}
+
+.others_area > div.form-group{
+  display: inline-block;
+  width:24%;
+  vertical-align: top;
+}
+.talent_area > div.form-group > label.control-label
+{
+    display: none !important;
+    visibility: hidden !important;
+}
+
 
 .noborder {
     border: none;

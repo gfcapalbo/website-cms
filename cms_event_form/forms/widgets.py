@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
+import calendar
 from odoo import models
 
 
@@ -37,3 +38,16 @@ class TalentAreaWidget(models.AbstractModel):
     @property
     def w_css_row_klass(self):
         return self._w_css_row_klass
+
+class SessionIdWidget(models.AbstractModel):
+
+    _name = 'cms.form.widget.session_ids'
+    _inherit = 'cms.form.widget.mixin'
+    _w_template = 'cms_event_form.field_widget_session_ids'
+
+    @property
+    def w_option_items(self):
+        return list(calendar.day_name)
+
+
+
