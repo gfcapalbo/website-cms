@@ -9,7 +9,7 @@ class TalentAreaWidget(models.AbstractModel):
 
     _name = 'cms.form.widget.talent_area_id'
     _inherit = 'cms.form.widget.mixin'
-    _w_template = 'cms_event_form.field_widget_talent_area_id'
+    _w_template = 'ppz_website_event.field_widget_talent_area_id'
     _w_css_class = 'divTable'
 
     # new properties of this particular widget
@@ -43,7 +43,7 @@ class SessionIdWidget(models.AbstractModel):
 
     _name = 'cms.form.widget.session_ids'
     _inherit = 'cms.form.widget.mixin'
-    _w_template = 'cms_event_form.field_widget_session_ids'
+    _w_template = 'ppz_website_event.field_widget_session_ids'
 
     @property
     def w_option_items(self):

@@ -6,7 +6,7 @@
         inherit_id="website.assets_frontend">
         <xpath expr="." position="inside">
             <link rel="stylesheet" type="text/less"
-                href="/cms_event_form/static/src/less/cms_event_form.less"/>
+                href="/ppz_website_event/static/src/less/ppz_website_event.less"/>
         </xpath>
     </template>
 </odoo>

@@ -39,8 +39,8 @@ if not testing:
         form_display_mode = 'vertical'
         form_title = ''
         form_results_per_page = 30
-        form_buttons_template = 'cms_event_form.ppz_search_form_buttons'
-        form_search_results_template = 'cms_event_form.form_search_results'
+        form_buttons_template = 'ppz_website_event.ppz_search_form_buttons'
+        form_search_results_template = 'ppz_website_event.form_search_results'
 
         _form_extra_css_klass = 'ppozo_layout'
         # the search form did not have the cancel_url method
