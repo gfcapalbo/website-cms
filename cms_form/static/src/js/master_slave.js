@@ -24,6 +24,10 @@ odoo.define('cms_form.master_slave', function (require) {
           'no_readonly': $.proxy(this.handle_no_readonly, this),
           'required': $.proxy(this.handle_required, this),
           'no_required': $.proxy(this.handle_no_required, this)
+          // for now i create two new handlers. experimental, 
+          // will be included in normal handlers on second iteration
+          'python_hide': $.proxy(this.python_handle_hide, this),
+          'python_show': $.proxy(this.python_handle_show, this),
         };
       },
       load_master_slave: function(){
@@ -52,6 +56,12 @@ odoo.define('cms_form.master_slave', function (require) {
             }
           });
         });
+      },
+      python_handle_hide: function(slave_fname){
+        $('[name="' + slave_fname +'"]').closest('.form-group').hide();
+      },
+      python_handle_show: function(slave_fname){
+        $('[name="' + slave_fname +'"]').closest('.form-group').show();
       },
       handle_hide: function(slave_fname){
         $('[name="' + slave_fname +'"]').closest('.form-group').hide();
